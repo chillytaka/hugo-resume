@@ -1,5 +1,11 @@
 {{ define "main" }}
    {{ partial "about.html" .}}
+   {{ if .Site.Params.showEducation }}
+       {{ partial "portfolio/education.html" . }}
+   {{ end }}
+   {{ if .Site.Params.showOrganization }}
+       {{ partial "portfolio/organization.html" . }}
+   {{ end }}
    {{ if .Site.Params.showSkills }}
        {{ partial "portfolio/skills.html" . }}
    {{ end }}
@@ -23,9 +29,6 @@
    {{ end }}
    {{ if .Site.Params.showExperience }}
        {{ partial "portfolio/experience.html" . }}
-   {{ end }}
-   {{ if .Site.Params.showEducation }}
-       {{ partial "portfolio/education.html" . }}
    {{ end }}
    {{ if .Site.Params.showBlog }}
       {{ with .Site.GetPage "section" "blog" }}
