@@ -1,15 +1,24 @@
+<div class="d-flex flex-column flex-md-row justify-content-between align-top mb-3">
+  {{with .Params.image}}
+  <img src="{{ . }}" class="project-img" />
+  {{ end }}
 
-<h3 class="mb-3"><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
-<div class="resume-item d-flex flex-column flex-md-row mb-3">
-
-  <div class="resume-content" style="width:200px;">
-    {{with  .Params.image }}
-      <img src="{{ . }}" style="max-height:150px;max-width:150px;"/>
-    {{ end }}
+  <div class="flex-grow-1">
+    <h3 class="mb-0 text-primary">{{ .Title }}</h3>
+    <p>
+      {{ .Description | safeHTML }}
+      <a href="{{.Permalink}}">Read more</a>
+    </p>
+    <div> {{partial "techtags" .}}</div>
   </div>
-  <div class="resume-date">
-    <p>{{ .Description | safeHTML }}<p>
-    <p class><a href="{{.Permalink}}">Read more..</a></p>
+
+  <div class="flex-grow-0">
+    {{with .Params.code}}
+    <a class="btn btn-primary my-2 btn-block" href="{{.}}">Code</a>
+    {{ end }}
+
+    {{with .Params.demo}}
+    <a class="btn btn-primary btn-block" href="{{.}}">Demo</a>
+    {{end}}
   </div>
 </div>
-<div>{{ partial "techtags" . }}</div>

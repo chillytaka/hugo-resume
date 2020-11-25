@@ -1,6 +1,7 @@
 ---
 title: "{{ replace .Name "-" " " | title }}"
-date: {{ .Date }}
+date: "{{ .Date }}"
+publishdate: "{{ .Date }}"
 featured: true
 description: "Text used in summary on main page"
 tags: ["techtags","used","in","website"]
