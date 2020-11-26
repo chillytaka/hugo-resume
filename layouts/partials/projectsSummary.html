@@ -1,23 +1,23 @@
-<div class="d-flex flex-column flex-md-row justify-content-between align-top mb-3">
+<div
+  class="d-flex flex-column flex-md-row justify-content-between align-top mb-3"
+>
   {{with .Params.image}}
   <img src="{{ . }}" class="project-img" />
   {{ end }}
 
   <div class="flex-grow-1">
-    <h3 class="mb-0 text-primary">{{ .Title }}</h3>
+    <a href="{{.Permalink}}"><h3 class="mb-0 text-primary">{{ .Title }}</h3></a>
     <p>
       {{ .Description | safeHTML }}
       <a href="{{.Permalink}}">Read more</a>
     </p>
-    <div> {{partial "techtags" .}}</div>
+    <div>{{partial "techtags" .}}</div>
   </div>
 
   <div class="flex-grow-0">
     {{with .Params.code}}
     <a class="btn btn-primary my-2 btn-block" href="{{.}}">Code</a>
-    {{ end }}
-
-    {{with .Params.demo}}
+    {{ end }} {{with .Params.demo}}
     <a class="btn btn-primary btn-block" href="{{.}}">Demo</a>
     {{end}}
   </div>
