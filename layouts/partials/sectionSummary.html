@@ -4,15 +4,24 @@
       <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
       {{ .Content | replaceRE "<p>" "<p class=\"lead\">" | safeHTML  }}      
     </div>
-  
-    {{ range first 3 .Pages.ByDate.Reverse }}
+
+    {{/*  
+      if page displayed is blog, than render the first 3 pages on a reverse byDate order
+      else, render it by using the featured params
+        */}}
+    {{ $featuredPages := .Pages }}
+    {{if ne .Title "blog"}}
+      {{ $featuredPages := where .Pages "Params.featured" true }}
+    {{end}}
+
+    {{ range first 3 $featuredPages.ByDate.Reverse }}
       {{ partial (printf "%s%s" .Section "Summary") . }}
     {{ end }}
   </div>
+
   {{ if gt .Pages 3 }}
     <div class="my-auto">
-      <h3>Wait! There's more..</h3>
-      <p>See <a href="{{ .Permalink }}">all {{ .Title | pluralize }}</a> for more examples!</p>
+      <p>See <a href="{{ .Permalink }}">All {{ .Title | pluralize }}</a> for more {{.Title | pluralize}}!</p>
     </div>
   {{ end }}
 </section>
