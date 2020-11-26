@@ -2,7 +2,7 @@
 {{/*  {{ partial "breadcrumbs" . }}  */}}
 <section class="resume-section p-3 p-lg-5 d-flex flex-column">
   <div class="my-auto" id="projects-content">
-    <h2 id="{{ urlize .Title }}" class="text-primary">{{ .Title }}</h2>
+    <h2 id="{{ urlize .Title }}" class="text-primary">All {{ .Title }}</h2>
     <p>{{ .Content }}</p>
     {{ range .Data.Pages.ByWeight }}
         {{ partial (printf "%s%s" .Type "Summary") . }}
